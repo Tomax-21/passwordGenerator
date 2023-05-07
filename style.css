@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: rgb(4,15,45);
+  overflow: hidden;
+  --fonce: rgb(4,15,45);
+  --fonce2: rgb(9,22,66);
+  --clair: rgb(92, 70, 156);
+  --clair2: rgb(212, 173, 252);
+  --blanc: rgb(231,232,236);
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+body {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #f1f2f3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+}
+*/
+
+h2 {
+  text-align: center;
+  margin: 15px 0;
+  color: var(--blanc);
+}
+
+.ligne3 {
+  background: var(--fonce2);
+  margin: 10px 10%;
+  border-radius: 5px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  color: var(--blanc);
+  font-size: 16px;
+  justify-content: space-between;
+  padding: 7px 15px;
+}
+.ligne1 {
+  background: var(--fonce2);
+  margin: 15px 3% 3px 3%;
+  border-radius: 5px;
+  height: 64px;
+}
+
+
+.parametre .title {
+  font-size: 14px;
+  margin: 10px 5% 0 5%;
+  color: var(--clair2);
+  opacity: 0.9;
+}
+.ligne2 {
+  background: var(--fonce2);
+  margin: 10px 10%;
+  border-radius: 5px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  color: var(--blanc);
+  font-size: 16px;
+  justify-content: center;
+  padding: 7px 15px;
+}
+.slideSize .title {
+  font-size: 14px;
+  margin: 10px 5% 0 5%;
+  color: var(--clair2);
+  opacity: 0.9;
+}
+.slideSize p {
+  margin: 0 3px;
+  font-size: 14px;
+}
+
+#range {
+  height: 5px;
+  width: 85%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.pwd .title {
+  font-size: 14px;
+  margin: 10px 5% 0 5%;
+
+  color: var(--clair2);
+  opacity: 0.9;
+}
+
+
+.btnGenerate {
+  height: 48px;
+  width: 90%;
+  background-color: var(--clair2);
+
+  margin: auto;
+  border-radius: 15px;
+  font-size: 24px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+.switch {
+  display: inline-block;
+  height: 24px;
+  position: relative;
+  width: 40px;
+}
+
+.switch input {
+  display:none;
+}
+
+.slider {
+  background-color: var(--clair2);
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 3px;
+  content: "";
+  height: 18px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 18px;
+}
+
+input:checked + .slider {
+  background-color: var(--clair);
+}
+
+input:checked + .slider:before {
+  transform: translateX(15px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+
+
+.container {
+  display: flex;
+}
+
+
+.card {
+  height: 100vh;
+}
+
+.listeElement {
+  display: flex;
+  flex-direction: column;
+  height: 85%;
+}
+
+.pwdGenerated {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pwdGenerated p {
+  color: var(--blanc);
+  font-weight: 400;
+  font-size: 20px;
+  
+}
+.icon {
+  color: var(--blanc);
+  font-size: 20px;
+  opacity: 0.7;
+  margin:0 5%;
+  transform: translateY(15px);
+
+}
+.txt {
+  display: flex;
+  justify-content: space-between;
+}
+
+.notif {
+  text-align: center;
+  height: 12px;
+  color: var(--blanc);
+  font-size: 12px;
+
+
+}
+.notif .textNotif {
+  
+  opacity: 0.7;
+  animation: 2s apparitionNotif;
+ 
+}
+
+@keyframes apparitionNotif {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+  }
+  
+}
+
+
+.splashScreen {
+  height: 100vh;
+  background-color: var(--fonce2);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  animation: 2s splashSpawn;
+}
+.splashScreen img {
+  height: 50%;
+  animation: 2s splashImg;
+}
+.splashScreen p{
+  color: var(--clair2);
+  font-size: 32px;
+  text-align: center;
+  transform: translateY(-50px);
+}
+
+@keyframes splashImg {
+  0% {
+    height: 0;
+  }
+  20% {
+    height: 50%;
+  }
+}
+
+@keyframes splashSpawn {
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generer un mot de passe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/57edaae710.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="splashScreen" id="splashScreen">
+        <img src="icon.png" alt="logo">
+        <p>Générateur de mot de passe</p>
+    </div>
+
+    <div class="card">
+
+        <h2>Générer un mot de passe</h1>
+
+        <div class="listeElement">
+
+            <div class="pwd">
+                <div class="txt">
+                    <p class="title">Mot de passe généré</p>
+                    <p class="icon" onclick="saveClipBoard()"><i class="fa-solid fa-copy"></i></p>                    
+                </div>
+
+                <div class="ligne1 pwdGenerated">
+                    <p id="passwordFinal"></p>
+                </div>
+                <div class="notif"><p class="textNotif" id="notif">Mot de passe copier</p></div>
+
+                
+
+            </div>
+
+            <div class="slideSize">
+                <p class="title" id="titleLenght">Longueur (4)</p>
+                <div class="ligne2 lenght">
+                    <p>4</p>
+                    <input type="range" name="range" id="range" min="4" value="12" max="24">
+                    <p>24</p>
+                </div>
+            </div>
+
+
+            <div class="parametre">
+
+                <p class="title">Parametres</p>
+
+                <div class="ligne3 minuscule">
+                    <p class="text">Minuscules</p>
+                
+                    <div class="container">
+                        <label class="switch" for="checkbox1">
+                            <input type="checkbox" id="checkbox1" checked="true"/>
+                            <div class="slider round"></div>
+                        </label>                    
+                    </div>
+        
+
+
+                </div>
+
+                <div class="ligne3 majuscule">
+                    <p class="text">Majuscules</p>
+
+
+                    <div class="container">
+                        <label class="switch" for="checkbox2">
+                            <input type="checkbox" id="checkbox2"/>
+                            <div class="slider round"></div>
+                        </label>                    
+                    </div>
+                </div>
+
+                <div class="ligne3 nombre">
+                    <p class="text">Nombres</p>
+
+
+                    <div class="container">
+                        <label class="switch" for="checkbox3">
+                            <input type="checkbox" id="checkbox3"/>
+                            <div class="slider round"></div>
+                        </label>                    
+                    </div>
+                </div>
+
+                <div class="ligne3 symbole">
+                    <p class="text">Symboles</p>
+
+                    <div class="container">
+                        <label class="switch" for="checkbox4">
+                            <input type="checkbox" id="checkbox4"/>
+                            <div class="slider round"></div>
+                        </label>                    
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="btnGenerate" onclick="generatePwd()">Générer</div>
+
+
+        </div>
+    </div>
+
+
+
+    <script>
+        //abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+
+        setTimeout(function() {
+            document.getElementById("splashScreen").style.display = "none"
+        }, 2000)
+
+        let longueurTtl = document.getElementById("titleLenght")
+        let longueurInput = document.getElementById("range")
+        longueurTtl.innerHTML = "Longueur ("+12+")";
+        
+        //oninput = quand la valeur change
+        longueurInput.oninput = function() {
+            //longueurTtl.innerHTML = "Longueur ("+longueurInput+")";
+            longueurTtl.innerHTML = "Longueur ("+this.value+")";
+        }
+
+        let minuscules = "abcdefghijklmnopqrstuvwxyz"
+        let majuscules = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let nombres = "0123456789"
+        let symboles = '!"#$%&()*+,-./:;<=>?@[]^_`{|}~'+"'"
+
+        document.getElementById("notif").style.display = "none"
+        
+
+        function getRandomInt(max) {
+            // max = 3 => 0, 1, 2
+            return Math.floor(Math.random() * max);
+        }
+        function setPwd(longueur, chaine) {
+            let pwdTemp = ""
+            for (i=0; i<longueur; i++) {
+                index = getRandomInt(chaine.length)
+                pwdTemp += chaine[index]
+            }
+            return pwdTemp
+        }
+        function generatePwd() {
+            chaine = ""
+            let valueMin = document.getElementById("checkbox1")
+            let valueMaj = document.getElementById("checkbox2")
+            let valueNum = document.getElementById("checkbox3")
+            let valueSym = document.getElementById("checkbox4")
+
+            if(valueMin.checked) {
+                chaine += minuscules
+            }
+            if (valueMaj.checked) {
+                chaine += majuscules
+            }
+            if (valueNum.checked) {
+                chaine += nombres
+            }
+            if (valueSym.checked) {
+                chaine += symboles
+            }
+
+
+            let longueur = document.getElementById("range").value
+            let pwd = setPwd(longueur, chaine)
+ 
+
+            document.getElementById("passwordFinal").innerHTML = pwd
+
+
+            //document.getElementById("notif").style.display = ""
+
+
+        }
+
+        function saveClipBoard() {
+            let password =  document.getElementById("passwordFinal").innerHTML
+            navigator.clipboard.writeText(password)
+            document.getElementById("notif").style.display = "block"
+            setTimeout(function() {
+                document.getElementById("notif").style.display = "none"
+            }, 1950)
+        }    
+        </script>
+</body>
+</html>
